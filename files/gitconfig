@@ -1,0 +1,13 @@
+[user]
+  name = Justin Taylor
+  email = justin@tayloredapps.org
+
+[core]
+  edior = vim
+  excludesfiles = ~/.gitignore
+
+[color]
+  ui = true
+
+[merge]
+  summary = true
