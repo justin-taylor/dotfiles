@@ -1,3 +1,4 @@
+#!/bin/bash
 
 function android_batch_install {
 
