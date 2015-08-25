@@ -1,13 +1,10 @@
 #!/bin/bash
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
-export PATH=/usr/local/mysql/bin:$PATH
 
 export VERSIONER_PYTHON_PREFER_64_BIT=yes
 export VERSIONER_PYTHON_PREFER_32_BIT=no
 
-export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
-export VIRTUALENVWRAPPER_PYTHON='/usr/local/Cellar/python/2.7.6_1/bin/python'
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
@@ -15,7 +12,7 @@ source ~/.git-completion.bash
 source ~/.bash_aliases
 
 if [ -f ~/.bash_local ]; then
-  rm ~/.bash_local            
+  source ~/.bash_local            
 fi
 
 PYTHONDONTWRITEBYTECODE=1
