@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# this is a template env file used to define environment vars
+export ANDROID_SDK=""

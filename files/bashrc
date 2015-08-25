@@ -1,12 +1,18 @@
 #!/bin/bash
+source ~/.bash_env            
+
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 export VERSIONER_PYTHON_PREFER_64_BIT=yes
 export VERSIONER_PYTHON_PREFER_32_BIT=no
+export PYTHONDONTWRITEBYTECODE=1
 
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
+
+export PATH="$ANDROID_SDK/tools:$PATH"
+export PATH="$ANDROID_SDK/platform-tools:$PATH"
 
 source ~/.git-completion.bash
 source ~/.bash_aliases
@@ -14,6 +20,4 @@ source ~/.bash_aliases
 if [ -f ~/.bash_local ]; then
   source ~/.bash_local            
 fi
-
-PYTHONDONTWRITEBYTECODE=1
 
