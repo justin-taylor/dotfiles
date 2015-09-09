@@ -23,3 +23,5 @@ do
   fi
 done
 
+ln -snf $PWD/bash_completion ~/.bash_completion
+

@@ -14,7 +14,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 export PATH="$ANDROID_SDK/tools:$PATH"
 export PATH="$ANDROID_SDK/platform-tools:$PATH"
 
-source ~/.git-completion.bash
+source ~/.bash_completion/*
 source ~/.bash_aliases
 
 if [ -f ~/.bash_local ]; then
