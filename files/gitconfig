@@ -3,7 +3,7 @@
   email = justin@tayloredapps.org
 
 [core]
-  edior = vim
+  edior = /usr/local/bin/vim
   excludesfiles = ~/.gitignore
 
 [color]
