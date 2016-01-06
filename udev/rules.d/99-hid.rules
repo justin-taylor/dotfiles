@@ -1,0 +1,1 @@
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="2209", ATTRS{idProduct}=="0010", OPTIONS=="ignore_device", MODE:="0666"

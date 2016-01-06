@@ -1,0 +1,22 @@
+syndaemon -t -i 1.5 -d
+
+if [ -f ~/.Xmodmap ]; then
+	xmodmap ~/.Xmodmap
+fi
+
+while true; do
+	/home/justin/Development/system_hacks/background.sh
+	sleep 20m
+done &
+
+utolock -time 5 -locker "sudo pm-suspend" &
+
+sleep 1
+source ~/.dual_monitors
+conky | while read -r; do xsetroot -name "$REPLY"; done &
+
+while true
+    do
+    /usr/local/bin/dwm 2> /dev/null
+done
+

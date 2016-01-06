@@ -1,0 +1,13 @@
+syndaemon -t -i 1.5 -d
+utolock -time 5 -locker "sudo pm-suspend" &
+
+sleep 1
+source ~/.dual_monitors
+
+exec gnome-session
+
+sleep 5
+
+if [ -f ~/.Xmodmap ]; then
+	xmodmap ~/.Xmodmap
+fi
