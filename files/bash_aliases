@@ -29,4 +29,9 @@ function jdb_attach {
 }
 
 alias :q="exit"
+alias ls='ls --color'
+alias ssh_maint_sbc="ssh cbadmin@172.16.10.2"
+alias sftp_maint_sbc="sftp cbadmin@172.16.10.2"
+alias ssh_sbc="ssh linaro@10.0.1.140"
+alias sftp_sbc="sftp linaro@10.0.1.140"
 

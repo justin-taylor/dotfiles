@@ -1,23 +1,46 @@
 #!/bin/bash
-source ~/.bash_env            
+source $HOME/.bash_env            
+source $HOME/.bash_aliases            
 
 export CLICOLOR=1
-export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 export VERSIONER_PYTHON_PREFER_64_BIT=yes
 export VERSIONER_PYTHON_PREFER_32_BIT=no
 export PYTHONDONTWRITEBYTECODE=1
 
 export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+if [ -f $VENV_WRAPPER ]; then
+  source $VENV_WRAPPER
+fi
 
 export PATH="$ANDROID_SDK/tools:$PATH"
 export PATH="$ANDROID_SDK/platform-tools:$PATH"
 
-source ~/.bash_completion/*
-source ~/.bash_aliases
+source $HOME/.bash_completion/*
 
 if [ -f ~/.bash_local ]; then
   source ~/.bash_local            
 fi
+
+BUILD_ENVSETUP=$PWD/build/envsetup.sh
+if [ -f $BUILD_ENVSETUP ]; then
+  source $BUILD_ENVSETUP
+  lunch $LUNCH_TARGET
+  WELCOME=$HOME/.link_welcome
+  if [ -f $BUILD_ENVSETUP ]; then
+    cat $WELCOME
+  fi
+fi
+
+remount_dev() {
+  umount /dev/sda6
+  mount -t hfsplus -o force,rw /dev/sda6 /media/justin/Shared/
+}
+
+restart_wifi() {
+  killall dhclient
+  dhclient
+  # /sbin/dhclient -d -q -sf /usr/lib/NetworkManager/nm-dhcp-helper -pf /run/sendsigs.omit.d/network-manager.dhclient-wlp4s0.pid -lf /var/lib/NetworkManager/dhclient-acc14d0c-7851-4089-9113-0a340a659c76-wlp4s0.lease -cf /var/lib/NetworkManager/dhclient-wlp4s0.conf wlp4s0
+}
+
 

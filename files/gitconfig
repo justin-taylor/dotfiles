@@ -1,13 +1,21 @@
 [user]
   name = Justin Taylor
-  email = justin@tayloredapps.org
+	email = justin.taylor@intersection.com
 
 [core]
   edior = /usr/local/bin/vim
   excludesfiles = ~/.gitignore
+	whitespace = trailing-space,space-before-tab
 
 [color]
   ui = true
 
 [merge]
   summary = true
+[apply]
+	whitespace = fix
+[push]
+	default = simple
+[credential]
+	helper = !aws codecommit credential-helper $@
+	UseHttpPath = true
