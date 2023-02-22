@@ -1,0 +1,5 @@
+#! /bin/sh
+
+amixer set Master toggle
+amixer set Headphone unmute
+amixer set Speaker unmute

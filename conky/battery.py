@@ -10,8 +10,8 @@ TODOs:
 
 
 PATH = '/sys/class/power_supply/BAT0/'
-FULL = PATH+'energy_full'
-NOW  = PATH+'energy_now'
+FULL = PATH+'charge_full'
+NOW  = PATH+'charge_now'
 STATUS = PATH+'status'
 THRESHOLD = 20
 ARROW_COUNT = 32
@@ -88,11 +88,11 @@ if __name__ == "__main__":
         info = format_battery_information(percent, status)
         if status != 'Charging':
             arrows = arrows()
-            print '${color #ff0000}  | Battery: %s %s' % (info, arrows)
+            print '${color #ff0000}   |   Battery: %s %s' % (info, arrows)
 
         else:
-            print '${color #ff0000}  | Battery: %s' % info
+            print '${color #ff0000}   |   Battery: %s' % info
 
     else:
-        print '${color #0077ff}  | Battery: ${color white}%s' %\
+        print '${color #0077ff}   |   Battery: ${color white}%s' %\
             format_battery_information(percent, status)

@@ -1,30 +1,8 @@
-! Swap caps lock and escape
-!remove Lock = Caps_Lock
-!keysym Caps_Lock = Escape
-!add Lock = Caps_Lock
-
-! swap capslock and ctrl
-keycode 66 = Control_L
-clear Lock
-add Control = Control_L
-keycode 117 = Caps_Lock
+! swap Caps_Lock and Control_R
+!
+remove Lock = Caps_Lock
+remove Control = Control_R
+keysym Control_R = Caps_Lock
+keysym Caps_Lock = Control_R
 add Lock = Caps_Lock
-
-
-!swap command and ctrl
-!clear control
-!clear mod4
-
-!keycode 105 =
-!keycode 206 =
-
-!keycode 133 = Control_L NoSymbol Control_L
-!keycode 134 = Control_R NoSymbol Control_R
-!keycode 37 = Super_L NoSymbol Super_L
-
-!add control = Control_L
-!add control = Control_R
-!add mod4 = Super_L
-
-!keycode 63 = Control_L
-!add Control = Control_L
+add Control = Control_R

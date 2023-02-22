@@ -1,0 +1,9 @@
+#! /bin/sh
+
+echo `printenv` >> /tmp/keyboard.log
+if [ "${ACTION}" = "add" ]; then
+  /usr/bin/xinput set-int-prop 13 "Device Enabled" 8 0
+else
+  /usr/bin/xinput set-int-prop 13 "Device Enabled" 8 1
+fi
+echo "RESULTS: $?" >> /tmp/keyboard.log

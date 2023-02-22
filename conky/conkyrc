@@ -1,44 +1,50 @@
-own_window yes
-own_window_type override
-own_window_colour 000000
-own_window_transparent no
-double_buffer yes
-cpu_avg_samples 2
-net_avg_samples 2
-use_xft no
-xftfont Terminus:size=16
-update_interval 0.5
-gap_y 1
-/*minimum_size 2350 10*/
-minimum_size 3190 10
-maximum_width 3190
-border_margin 4
-border_width 1
-draw_outline no
-default_color white
-alignment bottom_left
-use_spacer right
-no_buffers yes
-uppercase no
+-- vim: ts=4 sw=4 noet ai cindent syntax=lua
 
-TEXT
+conky.config = {
+	xinerama_head = 1,
+    alignment = 'bottom_left',
+    background = true,
+    border_width = 1,
+    cpu_avg_samples = 2,
+	default_color = 'white',
+    default_outline_color = 'white',
+    default_shade_color = 'white',
+    draw_borders = false,
+    draw_graph_borders = true,
+    draw_outline = false,
+    draw_shades = false,
+    use_xft = true,
+    gap_x = 0,
+    gap_y = 0,
+    minimum_height = 5,
+	minimum_width = 2560,
+	font = 'Hack Nerd Font:size=8',
+    net_avg_samples = 2,
+    no_buffers = true,
+    out_to_console = false,
+    out_to_stderr = false,
+    extra_newline = false,
+    own_window = true,
+    own_window_class = 'Conky',
+    own_window_type = 'override',
+	own_window_colour = '000000',
+	own_window_transparent = false,
+    stippled_borders = 0,
+    update_interval = 1.0,
+    uppercase = false,
+    use_spacer = 'none',
+    show_graph_scale = false,
+    show_graph_range = false
+}
+
+conky.text = [[
 ${color #00bfff}${exec date +'%b %d %r'}\
-${color #0077ff}    Network:${color white} ${wireless_essid wlan0} \
+${color #0077ff}    Network:${color white} ${exec nmcli -t -f active,ssid dev wifi | egrep '^yes' | awk 'BEGIN{FS=":"}{print $2}'} \
 ${color #FF0000}${exec ps ax | grep [v]pnc | head -1 | awk '{ print $NF }'} \
 ${color #0077ff}|   Up: ${color white}${upspeed wlan0}${color #0077ff}  \
 ${color #0077ff}|   Down: ${color white}${downspeed wlan0} \
 ${color #0077ff}|   RAM: ${color white}$memperc% \
 ${execp python2 ~/.conky/battery.py}   \
 ${color #0077ff}|   Volume ${exec amixer get Master | egrep -o "[+[a-z]+]" | tail -1} :${color white} \
-${exec amixer get Master | egrep -o "[0-9]+%" | head -1}   \
-${alignr}\
-${color #0077ff}    Network:${color white} ${wireless_essid wlan0} \
-${color #FF0000}${exec ps ax | grep [v]pnc | head -1 | awk '{ print $NF }'} \
-${color #0077ff}|   Up: ${color white}${upspeed wlan0}${color #0077ff}  \
-${color #0077ff}|   Down: ${color white}${downspeed wlan0} \
-${color #0077ff}|   RAM: ${color white}$memperc% \
-${execp python2 ~/.conky/battery.py}   \
-${color #0077ff}|   Volume ${exec amixer get Master | egrep -o "[+[a-z]+]" | tail -1} :${color white} \
-${exec amixer get Master | egrep -o "[0-9]+%" | head -1}   \
-${color #00bfff}${exec date +'%b %d %r'}\
-
+${exec amixer get Master | egrep -o "[0-9]+%" | head -1}\
+]]

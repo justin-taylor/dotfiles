@@ -1,0 +1,3 @@
+SLAVE=`xinput list | grep "AT Translated Set 2 keyboard" | awk 'BEGIN{FS="id="}{print $2}' | awk '{print $1}'`
+MASTER=`xinput list | grep "master keyboard" | awk 'BEGIN{FS="id="}{print $2}' | awk '{print $1}'`
+xinput reattach $SLAVE $MASTER

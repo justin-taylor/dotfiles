@@ -1,0 +1,46 @@
+#!/usr/bin/env python
+
+import subprocess
+import sys
+
+def restartConky():
+    cmd = "killall conky"
+    print cmd
+    subprocess.call(cmd, shell=True)
+
+    cmd = 'conky'
+    print cmd
+    subprocess.call(cmd, shell=True)
+
+
+def getActiveMonitors():
+    #Find display monitor
+    monitor = subprocess.check_output("xrandr -q | grep ' connected' | cut -d ' ' -f1", shell=True)
+    return monitor.split('\n')[:-1]
+
+
+if __name__ == "__main__":
+
+    cmd = "xrandr --auto"
+    print cmd
+    subprocess.call(cmd, shell=True)
+
+    monitors = getActiveMonitors()
+    if len(monitors) == 0:
+        print("Something is very wrong")
+        sys.exit(1)
+
+    cmd = "xrandr --output %s --mode 1280x720" % (monitors[0])
+    print cmd
+    subprocess.call(cmd, shell=True)
+
+    if len(monitors) == 1:
+        restartConky()
+        sys.exit()
+
+    cmd = "xrandr --output %s --above %s" % (monitors[1], monitors[0])
+    print cmd
+    subprocess.call(cmd, shell=True)
+
+    restartConky()
+
